@@ -57,13 +57,6 @@ git config --global push.default simple
 git config user.name "Travis CI"
 git config user.email "travis@travis-ci.org"
 
-# Remove everything currently in the gh-pages branch.
-# GitHub is smart enough to know which files have changed and which files have
-# stayed the same and will only update the changed files. So the gh-pages branch
-# can be safely cleaned, and it is sure that everything pushed later is the new
-# documentation.
-rm -rf *
-
 # Need to create a .nojekyll file to allow filenames starting with an underscore
 # to be seen on the gh-pages site. Therefore creating an empty .nojekyll file.
 # Presumably this is only needed when the SHORT_NAMES option in Doxygen is set
@@ -74,6 +67,7 @@ echo "" > .nojekyll
 ##### Generate the Doxygen code documentation and log the output.          #####
 echo 'Generating Doxygen code documentation...'
 # Redirect both stderr and stdout to the log file AND the console.
+ls
 doxygen Doxyfile 2>&1 | tee doxygen.log
 
 ################################################################################
@@ -88,7 +82,7 @@ if [ -d "html" ] && [ -f "html/index.html" ]; then
     # gh-pages branch.
     # GitHub is smart enough to know which files have changed and which files have
     # stayed the same and will only update the changed files.
-    git add --all
+    git add html/
 
     # Commit the added files with a title and description containing the Travis CI
     # build number and the GitHub commit reference that issued this build.
