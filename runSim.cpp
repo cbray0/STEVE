@@ -10,6 +10,9 @@
 #include <vector>
 #include <mutex>
 #include <ctime>
+#include <string>
+#include <limits.h>
+#include <unistd.h>
 
 using namespace std;
 /// To prevent multiple threads from using stdout at the same time
@@ -88,7 +91,7 @@ bool clean(bool autoClean=0){
         system("rm *.root"); // Clean directory
         return 1;
     }
-    int i, ret = system("if [ ! -f g4out*.root ]; then \n echo \"All clean.\" \n exit 1 \nelse \n echo \"Please clean up first. Press enter exit or press c and then enter to autoclean.\" \n read cleanup \n if [ \"$cleanup\" == \"c\" ]; then \n rm *.root && exit 1 \n fi \nfi \nexit 0 \n"); // Run clean command: checking that there are no g4out*.root files in the current directory, then allowing the user to exit the program or automatically remove the if there are. Sorry for the messy bash, its just easier to do file manipulations in bash than it is in c++
+    int i, ret = system("if [ ! -f *.root ]; then \n echo \"All clean.\" \n exit 1 \nelse \n echo \"Please clean up first. Press enter exit or press c and then enter to autoclean.\" \n read cleanup \n if [ \"$cleanup\" == \"c\" ]; then \n rm *.root && exit 1 \n fi \nfi \nexit 0 \n"); // Run clean command: checking that there are no g4out*.root files in the current directory, then allowing the user to exit the program or automatically remove the if there are. Sorry for the messy bash, its just easier to do file manipulations in bash than it is in c++
     i=WEXITSTATUS(ret); // Get return value: 1 if clean, 0 if not
     return i;
 }
@@ -110,6 +113,8 @@ bool clean(bool autoClean=0){
 * `--test` - Internal testing flag. Currently unused.
 
 ## Notes:
+
+The program also wans you if you are running it from a directory not inside of /home/data because of my specific use case.
 
 Changes needed in simulation for runSim to work:
 1. Simulation seed must pull from /dev/random
@@ -164,6 +169,17 @@ g++ -Wall -std=c++11 -pthread -Ofast -o runSim.o runSim.cpp
 
 */
 int main(int argc,char** argv){
+    char result[ PATH_MAX ]; // Warn user if run from a directory that does not begin with /home/data/
+    ssize_t count = readlink( "/proc/self/exe", result, PATH_MAX );
+    string st = std::string( result, (count > 0) ? count : 0 ) ;
+    st = "/home/cbray/thing";
+    if(st.find("/home/data")==string::npos){
+        cout << "Warning, not running in /home/data, which may cause out of storage issues. Please consider running from /home/data. Press enter to quit or c then enter to continue." << endl;
+        char input[2];
+        cin.getline(input,2);
+        if(input[0]!='c'&&input[0]!='C') return 0;
+    }
+
     string numSims = "48";
     bool autoClean = 0;
     bool afterClean = 0;
