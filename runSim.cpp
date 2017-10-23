@@ -125,9 +125,7 @@ bool directoryCheck(){
 
 * `--regex` - Runs the simulation from the string provided once all instances of "%n" are replaced by the thread number. It allows for more flexibility in command execution as the singlethreaded command for any simulation (that has the two modifications described below) can easily be multithreaded. Make sure to redirect stdout and stderr to a file or /dev/null to prevent simultaneous writing to the console. Note that the string should be surrounded in quotes as to not specify additional arguments.
 
-* `--output` - Final combined output .root filename. Defaults to `g4out.root`.
-
-* `--test` - Internal testing flag. Currently unused.
+* `--output` - Final combined output .root filename. Defaults to `g4out.root`.\
 
 ## Notes:
 
@@ -196,7 +194,6 @@ int main(int argc,char** argv){
     for(int i=0;i<argc;i++){ // Assign arguments to values
         if(i<argc-1){
             if(string(argv[i])=="-t") numSims = argv[++i];
-            if(string(argv[i])=="--test") test = argv[++i];
             if(string(argv[i])=="--regex") regex = argv[++i];
             if(string(argv[i])=="--output") output = argv[++i];
         }
