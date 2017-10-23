@@ -1,6 +1,7 @@
 var NAVTREE =
 [
   [ "STEVE (Simultaneous Thread EValuation of gEant4)", "index.html", [
+    [ "STEVE", "md_README.html", null ],
     [ "Files", null, [
       [ "File List", "files.html", "files" ],
       [ "Globals", "globals.html", [
