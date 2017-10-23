@@ -48,7 +48,6 @@ git clone -b master https://git@$GH_REPO_REF
 cd $GH_REPO_NAME
 git checkout gh-pages
 git branch --set-upstream-to=origin/gh-pages gh-pages
-git push -u origin gh-pages
 
 ##### Configure git.
 # Set the push default to simple i.e. push only the current branch.
