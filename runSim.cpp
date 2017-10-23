@@ -9,7 +9,6 @@
 #include <vector>
 #include <mutex>
 #include <ctime>
-#include <string>
 #include <limits.h>
 #include <unistd.h>
 
@@ -33,12 +32,12 @@ std::string ReplaceString(std::string subject, const std::string& search, const 
 /**
 ## Apply regex transformations to input string.
 
-# Arguments:
+### Arguments:
 * `string& input` - Input string reference to modify in place.
 
 * `const string threadnumber` - Threadnumber string to replace %n with. Only valid for threads, so it defaults to "".
 
-# Transformations:
+### Transformations:
 * "%d" -> date
 
 * "%t" -> time
@@ -76,7 +75,7 @@ void runSimRegex(string regex, string num){
 }
 
 /**
-##Clean the current directory
+## Clean the current directory
 
 ### Arguments:
 * `bool autoClean` - Bool of whether or not to automatically clean the directory. It defualts to zero, which will prompt the user first, but if set to one the program cleans the directory without outside input.
@@ -93,6 +92,25 @@ bool clean(bool autoClean=0){
     int i, ret = system("if [ ! -f *.root ]; then \n echo \"All clean.\" \n exit 1 \nelse \n echo \"Please clean up first. Press enter exit or press c and then enter to autoclean.\" \n read cleanup \n if [ \"$cleanup\" == \"c\" ]; then \n rm *.root && exit 1 \n fi \nfi \nexit 0 \n"); // Run clean command: checking that there are no g4out*.root files in the current directory, then allowing the user to exit the program or automatically remove the if there are. Sorry for the messy bash, its just easier to do file manipulations in bash than it is in c++
     i=WEXITSTATUS(ret); // Get return value: 1 if clean, 0 if not
     return i;
+}
+
+/**
+##Check that the current directory is in /home/data
+
+### Notes:
+If it is, it returns zero, otherwise it prompts the user if they want to procede anyway or not. Returns 0 if they want to procede and 1 otherwise.
+*/
+bool directoryCheck(){
+    char result[ PATH_MAX ]; // Warn user if run from a directory that does not begin with /home/data/
+    ssize_t count = readlink( "/proc/self/exe", result, PATH_MAX );
+    string st = std::string( result, (count > 0) ? count : 0 ) ;
+    if(st.find("/home/data")==string::npos){
+        cout << "Warning, not running in /home/data, which may cause out of storage issues. Please consider running from /home/data. Press enter to quit or c then enter to continue." << endl;
+        char input[2];
+        cin.getline(input,2);
+        if(input[0]!='c'&&input[0]!='C') return 1;
+    }
+    return 0;
 }
 
 /**
@@ -168,16 +186,7 @@ g++ -Wall -std=c++11 -pthread -Ofast -o runSim.o runSim.cpp
 
 */
 int main(int argc,char** argv){
-    char result[ PATH_MAX ]; // Warn user if run from a directory that does not begin with /home/data/
-    ssize_t count = readlink( "/proc/self/exe", result, PATH_MAX );
-    string st = std::string( result, (count > 0) ? count : 0 ) ;
-    if(st.find("/home/data")==string::npos){
-        cout << "Warning, not running in /home/data, which may cause out of storage issues. Please consider running from /home/data. Press enter to quit or c then enter to continue." << endl;
-        char input[2];
-        cin.getline(input,2);
-        if(input[0]!='c'&&input[0]!='C') return 0;
-    }
-
+    if(directoryCheck()) return 1; // Check if directory is in /home/data or for user override.
     string numSims = "48"; // Default values for all arguments
     bool autoClean = 0;
     bool afterClean = 0;
