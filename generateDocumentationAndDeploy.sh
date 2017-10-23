@@ -52,8 +52,6 @@ echo doxygen $DOXYFILE 2>&1 | tee doxygen.log
 doxygen $DOXYFILE 2>&1 | tee doxygen.log
 echo cp -r html/ ..
 cp -r html/ ..
-echo git checkout gh-pages
-git checkout gh-pages
 echo ls
 ls
 echo git branch --set-upstream-to=origin/gh-pages gh-pages
