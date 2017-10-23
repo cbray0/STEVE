@@ -1,21 +1,11 @@
 var NAVTREE =
 [
-  [ "STEVE (Simultaneous Thread EValuation of gEant4)", "index.html", [
-    [ "STEVE", "md_README.html", null ],
-    [ "Files", null, [
-      [ "File List", "files.html", "files" ],
-      [ "Globals", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ]
-      ] ]
-    ] ]
-  ] ]
+  [ "STEVE (Simultaneous Thread EValuation of gEant4)", "index.html", ]
 ];
 
 var NAVTREEINDEX =
 [
-"files.html"
+"index.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
@@ -128,7 +118,7 @@ function createIndent(o,domNode,node,level)
     span.style.display = 'inline-block';
     span.style.width   = 16*(level+1)+'px';
     span.style.height  = '22px';
-    span.innerHTML = '&nbsp;';
+    span.innerHTML = '&#160;';
     domNode.appendChild(span);
   } 
 }
