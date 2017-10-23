@@ -1,0 +1,2 @@
+install: true
+script: g++ -Wall -std=c++11 -pthread -Ofast -o runSim.o runSim.cpp
