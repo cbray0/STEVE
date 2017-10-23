@@ -44,14 +44,22 @@ mkdir code_docs
 cd code_docs
 
 # Get the current gh-pages branch
+echo git clone -b master https://git@$GH_REPO_REF
 git clone -b master https://git@$GH_REPO_REF
+echo cd $GH_REPO_NAME
 cd $GH_REPO_NAME
+echo ls
 ls
+echo pwd
+pwd
+echo git checkout gh-pages
 git checkout gh-pages
+echo git branch --set-upstream-to=origin/gh-pages gh-pages
 git branch --set-upstream-to=origin/gh-pages gh-pages
 
 ##### Configure git.
 # Set the push default to simple i.e. push only the current branch.
+echo git config --global push.default simple
 git config --global push.default simple
 # Pretend to be an user called Travis CI.
 git config user.name "Travis CI"
@@ -67,8 +75,12 @@ echo "" > .nojekyll
 ##### Generate the Doxygen code documentation and log the output.          #####
 echo 'Generating Doxygen code documentation...'
 # Redirect both stderr and stdout to the log file AND the console.
+echo ls
 ls
-doxygen Doxyfile 2>&1 | tee doxygen.log
+echo doxygen $DOXYFILE 2>&1 | tee doxygen.log
+doxygen $DOXYFILE 2>&1 | tee doxygen.log
+echo ls
+ls
 
 ################################################################################
 ##### Upload the documentation to the gh-pages branch of the repository.   #####
