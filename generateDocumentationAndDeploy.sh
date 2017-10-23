@@ -54,9 +54,12 @@ echo pwd
 pwd
 echo git checkout gh-pages
 git checkout gh-pages
+echo ls
+ls
 echo git branch --set-upstream-to=origin/gh-pages gh-pages
 git branch --set-upstream-to=origin/gh-pages gh-pages
-
+echo ls
+ls
 ##### Configure git.
 # Set the push default to simple i.e. push only the current branch.
 echo git config --global push.default simple
