@@ -13,7 +13,7 @@
 #include <unistd.h>
 
 using namespace std;
-/// To prevent multiple threads from using stdout at the same time
+/// To prevent multiple threads from using stdout at the same time, lock this mutex, then print, then unlock it to let another thread use it.
 mutex printing;
 
 /**
