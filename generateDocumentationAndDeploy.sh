@@ -52,6 +52,10 @@ echo ls
 ls
 echo pwd
 pwd
+echo doxygen $DOXYFILE 2>&1 | tee doxygen.log
+doxygen $DOXYFILE 2>&1 | tee doxygen.log
+echo ls
+ls
 echo git checkout gh-pages
 git checkout gh-pages
 echo ls
@@ -80,8 +84,6 @@ echo 'Generating Doxygen code documentation...'
 # Redirect both stderr and stdout to the log file AND the console.
 echo ls
 ls
-echo doxygen $DOXYFILE 2>&1 | tee doxygen.log
-doxygen $DOXYFILE 2>&1 | tee doxygen.log
 echo ls
 ls
 
