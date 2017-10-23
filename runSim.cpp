@@ -2,7 +2,6 @@
     Multithreading workaround code
 
     @author Connor Bray
-    @version 2 10/14/17
 */
 #include <string>
 #include <iostream>
@@ -172,7 +171,6 @@ int main(int argc,char** argv){
     char result[ PATH_MAX ]; // Warn user if run from a directory that does not begin with /home/data/
     ssize_t count = readlink( "/proc/self/exe", result, PATH_MAX );
     string st = std::string( result, (count > 0) ? count : 0 ) ;
-    st = "/home/cbray/thing";
     if(st.find("/home/data")==string::npos){
         cout << "Warning, not running in /home/data, which may cause out of storage issues. Please consider running from /home/data. Press enter to quit or c then enter to continue." << endl;
         char input[2];
@@ -180,7 +178,7 @@ int main(int argc,char** argv){
         if(input[0]!='c'&&input[0]!='C') return 0;
     }
 
-    string numSims = "48";
+    string numSims = "48"; // Default values for all arguments
     bool autoClean = 0;
     bool afterClean = 0;
     string test = "";
