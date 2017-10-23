@@ -48,16 +48,10 @@ echo git clone -b master https://git@$GH_REPO_REF
 git clone -b master https://git@$GH_REPO_REF
 echo cd $GH_REPO_NAME
 cd $GH_REPO_NAME
-echo ls
-ls
-echo pwd
-pwd
 echo doxygen $DOXYFILE 2>&1 | tee doxygen.log
 doxygen $DOXYFILE 2>&1 | tee doxygen.log
-echo ls
-ls
-echo git stash
-git stash
+echo cp -r html/ ..
+cp -r html/ ..
 echo git checkout gh-pages
 git checkout gh-pages
 echo ls
@@ -66,8 +60,8 @@ echo git branch --set-upstream-to=origin/gh-pages gh-pages
 git branch --set-upstream-to=origin/gh-pages gh-pages
 echo ls
 ls
-echo git stash pop
-git stash pop
+echo cp -r ../html/ .
+cp -r ../html/ .
 echo ls
 ls
 ##### Configure git.
