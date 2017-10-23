@@ -46,6 +46,7 @@ cd code_docs
 # Get the current gh-pages branch
 git clone -b master https://git@$GH_REPO_REF
 cd $GH_REPO_NAME
+ls
 git checkout gh-pages
 git branch --set-upstream-to=origin/gh-pages gh-pages
 
