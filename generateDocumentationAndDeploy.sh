@@ -45,6 +45,7 @@ cd code_docs
 
 git clone -b master https://git@$GH_REPO_REF
 cd $GH_REPO_NAME
+# Generate documentatation, move it to a safe directory, then get rid of this one.
 doxygen $DOXYFILE 2>&1 | tee doxygen.log
 cp -r html/ ..
 cd ..
@@ -67,6 +68,8 @@ git config user.email "travis@travis-ci.org"
 # can be safely cleaned, and it is sure that everything pushed later is the new
 # documentation.
 rm -rf *
+
+# Put the generated documentation back
 cp -r ../html/ .
 
 # Need to create a .nojekyll file to allow filenames starting with an underscore
@@ -74,11 +77,6 @@ cp -r ../html/ .
 # Presumably this is only needed when the SHORT_NAMES option in Doxygen is set
 # to NO, which it is by default. So creating the file just in case.
 echo "" > .nojekyll
-
-################################################################################
-##### Generate the Doxygen code documentation and log the output.          #####
-echo 'Generating Doxygen code documentation...'
-# Redirect both stderr and stdout to the log file AND the console.
 
 ################################################################################
 ##### Upload the documentation to the gh-pages branch of the repository.   #####
