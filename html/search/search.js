@@ -7,10 +7,20 @@
 
 var indexSectionsWithContent =
 {
+  0: "cdmprs",
+  1: "r",
+  2: "cdmr",
+  3: "p",
+  4: "s"
 };
 
 var indexSectionNames =
 {
+  0: "all",
+  1: "files",
+  2: "functions",
+  3: "variables",
+  4: "pages"
 };
 
 function convertToId(search)

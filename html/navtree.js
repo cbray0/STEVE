@@ -1,11 +1,21 @@
 var NAVTREE =
 [
-  [ "STEVE (Simultaneous Thread EValuation of gEant4)", "index.html", ]
+  [ "STEVE (Simultaneous Thread EValuation of gEant4)", "index.html", [
+    [ "STEVE", "md_README.html", null ],
+    [ "Files", null, [
+      [ "File List", "files.html", "files" ],
+      [ "Globals", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ]
+      ] ]
+    ] ]
+  ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"files.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
