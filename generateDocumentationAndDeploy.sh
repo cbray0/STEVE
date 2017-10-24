@@ -67,7 +67,7 @@ git config user.email "travis@travis-ci.org"
 # can be safely cleaned, and it is sure that everything pushed later is the new
 # documentation.
 rm -rf *
-cp ../html/ .
+cp -r ../html/ .
 
 # Need to create a .nojekyll file to allow filenames starting with an underscore
 # to be seen on the gh-pages site. Therefore creating an empty .nojekyll file.
