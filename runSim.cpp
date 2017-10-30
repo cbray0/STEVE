@@ -119,7 +119,7 @@ bool directoryCheck(){
 ### Arguments:
 * `-t threads` - Number of threads to run
 
-*  `-y` - Automatically cleans directory without user input.
+*  `-y` - Automatically cleans directory and skips directory check without user input.
 
 *  `--clean` - Automatically cleans directory after simulation completion, leaving only the combined output file instead of the induvidual `.root` files from each thread. Note, this removes all .root files except for the final output file, so do not use if you wish to preserve other `.root` files in the directory. Instead, with knowledge of how your induvidual thread files are named, run an rm command after runSim.o to clean up.
 
@@ -184,7 +184,6 @@ g++ -Wall -std=c++11 -pthread -Ofast -o runSim.o runSim.cpp
 
 */
 int main(int argc,char** argv){
-    if(directoryCheck()) return 1; // Check if directory is in /home/data or for user override.
     string numSims = "48"; // Default values for all arguments
     bool autoClean = 0;
     bool afterClean = 0;
@@ -200,6 +199,7 @@ int main(int argc,char** argv){
         if(string(argv[i])=="-y") autoClean = 1;
         if(string(argv[i])=="--clean") afterClean = 1;
     }
+    if(!autoClean&&directoryCheck()) return 1; // Check if directory is in /home/data or for user override.
     regexReplace(output); // Format the output filename
     if(!clean(autoClean)) return 2; // Cleans the directory of g4out*.root files
     vector<thread> threadpool;
