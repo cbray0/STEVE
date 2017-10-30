@@ -84,12 +84,12 @@ void runSimRegex(string regex, string num){
 Ensures there are no files matching g4out*.root in the current directory. If there are, it offers to automatically remove them, or to exit the program to allow the user to save and remove them manually.
 Also note that this assumes that all output files end in `.root`, and no other files end in `.root`. If you want to preserve these files, you should move them to a differnt directory or change their filename (as an example, `g4out.root`->`g4out.root.keep`).
 */
-bool clean(bool autoClean=0){
+bool clean(bool autoClean, string cleanCMD="rm -f *.root;"){
     if(autoClean){
-        system("rm *.root"); // Clean directory
+        system(cleanCMD.c_str()); // Clean directory
         return 1;
     }
-    int i, ret = system("if [ ! -f *.root ]; then \n echo \"All clean.\" \n exit 1 \nelse \n echo \"Please clean up first. Press enter exit or press c and then enter to autoclean.\" \n read cleanup \n if [ \"$cleanup\" == \"c\" ]; then \n rm *.root && exit 1 \n fi \nfi \nexit 0 \n"); // Run clean command: checking that there are no g4out*.root files in the current directory, then allowing the user to exit the program or automatically remove the if there are. Sorry for the messy bash, its just easier to do file manipulations in bash than it is in c++
+    int i, ret = system(("echo \"There may be conflicting files in your current directory. If there are none, then press s then enter to skip cleaning and continue execution. If you wish to exit the program, press enter to exit. Otherwise, press c then enter to clean up.\" \n read cleanup \n if [ \"$cleanup\" == \"c\" ]; then \n "+cleanCMD+" && exit 1 \n fi \n if [ \"$cleanup\" == \"s\" ]; then \n exit 1 \n fi \nexit 0 \n").c_str()); // Ask user if they want to run the clean command, then run it if necessary
     i=WEXITSTATUS(ret); // Get return value: 1 if clean, 0 if not
     return i;
 }
@@ -121,7 +121,9 @@ bool directoryCheck(){
 
 *  `-y` - Automatically cleans directory and skips directory check without user input.
 
-*  `--clean` - Automatically cleans directory after simulation completion, leaving only the combined output file instead of the induvidual `.root` files from each thread. Note, this removes all .root files except for the final output file, so do not use if you wish to preserve other `.root` files in the directory. Instead, with knowledge of how your induvidual thread files are named, run an rm command after runSim.o to clean up.
+*  `--clean` - Supply your own clean command. If not included, default clean command is `rm -f *.root`. This can reference a file if the command executes a file.
+
+* `--remove` - Cleans directory after simulation completion by adding .keep to the end of the output file, then running the clean function, which is by defailt `rm -f *.root`, then moving the output back to the original filename.
 
 * `--regex` - Runs the simulation from the string provided once all instances of "%n" are replaced by the thread number. It allows for more flexibility in command execution as the singlethreaded command for any simulation (that has the two modifications described below) can easily be multithreaded. Make sure to redirect stdout and stderr to a file or /dev/null to prevent simultaneous writing to the console. Note that the string should be surrounded in quotes as to not specify additional arguments.
 
@@ -190,22 +192,25 @@ int main(int argc,char** argv){
     string test = "";
     string regex = "";
     string output = "g4out.root";
+    string cleanCMD="rm -f *.root";
     for(int i=0;i<argc;i++){ // Assign arguments to values
         if(i<argc-1){
             if(string(argv[i])=="-t") numSims = argv[++i];
             if(string(argv[i])=="--regex") regex = argv[++i];
             if(string(argv[i])=="--output") output = argv[++i];
+            if(string(argv[i])=="--clean") cleanCMD = argv[++i];
         }
         if(string(argv[i])=="-y") autoClean = 1;
-        if(string(argv[i])=="--clean") afterClean = 1;
+        if(string(argv[i])=="--remove") afterClean = 1;
     }
     if(!autoClean&&directoryCheck()) return 1; // Check if directory is in /home/data or for user override.
+    if(!clean(autoClean,cleanCMD)) return 2; // Cleans the directory of g4out*.root files
     regexReplace(output); // Format the output filename
-    if(!clean(autoClean)) return 2; // Cleans the directory of g4out*.root files
     vector<thread> threadpool;
     for(int i=0;i<stoi(numSims);i++) threadpool.push_back(thread(runSimRegex, regex, to_string(i))); // Start each numbered simulation in a thread
     for(int i=0;i<stoi(numSims);i++) threadpool[i].join(); // Wait for all simulations to finish
+    cout << output << endl; // TODO
     system(("hadd "+output+" *.root").c_str()); // Merge all histograms
-    if(afterClean) system(("mv "+output+" "+output+".keep; rm *.root; mv "+output+".keep "+output).c_str());
+    if(afterClean)system(("mv "+output+" "+output+".keep;"+cleanCMD+";mv "+output+".keep "+output).c_str());
     return 0;
 }
