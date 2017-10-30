@@ -208,7 +208,7 @@ Variables</h2></td></tr>
 <h2>Multithreading workaround</h2>
 <h3>Arguments:</h3>
 <p><code>-t threads</code> - Number of threads to run</p>
-<p><code>-y</code> - Automatically cleans directory without user input.</p>
+<p><code>-y</code> - Automatically cleans directory and skips directory check without user input.</p>
 <p><code>--clean</code> - Automatically cleans directory after simulation completion, leaving only the combined output file instead of the induvidual <code>.root</code> files from each thread. Note, this removes all .root files except for the final output file, so do not use if you wish to preserve other <code>.root</code> files in the directory. Instead, with knowledge of how your induvidual thread files are named, run an rm command after runSim.o to clean up.</p>
 <p><code>--regex</code> - Runs the simulation from the string provided once all instances of "%n" are replaced by the thread number. It allows for more flexibility in command execution as the singlethreaded command for any simulation (that has the two modifications described below) can easily be multithreaded. Make sure to redirect stdout and stderr to a file or /dev/null to prevent simultaneous writing to the console. Note that the string should be surrounded in quotes as to not specify additional arguments.</p>
 <p><code>--output</code> - Final combined output .root filename. Defaults to <code>g4out.root</code>.\</p>
