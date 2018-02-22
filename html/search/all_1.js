@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['directorycheck',['directoryCheck',['../runSim_8cpp.html#acc20092961d2d6b739be4b1fdbc74f18',1,'runSim.cpp']]]
+  ['clean',['clean',['../runSim_8cpp.html#af0bf308cdf10032bb5c275aa72cabaf6',1,'runSim.cpp']]]
 ];

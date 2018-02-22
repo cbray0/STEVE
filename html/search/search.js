@@ -7,9 +7,9 @@
 
 var indexSectionsWithContent =
 {
-  0: "cdmprs",
+  0: "bcdmprs",
   1: "r",
-  2: "cdmr",
+  2: "bcdmr",
   3: "p",
   4: "s"
 };

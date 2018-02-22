@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main',['main',['../runSim_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'runSim.cpp']]]
+  ['directorycheck',['directoryCheck',['../runSim_8cpp.html#acc20092961d2d6b739be4b1fdbc74f18',1,'runSim.cpp']]]
 ];
