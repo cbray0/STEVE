@@ -16,6 +16,16 @@ using namespace std;
 /// To prevent multiple threads from using stdout at the same time, lock this mutex, then print, then unlock it to let another thread use it.
 mutex printing;
 
+int bash(std::string command,int nice=0){
+    string shell = "\
+    #!/bin/bash \n\
+    source ~/.bashrc\n\
+    ";
+    int i, ret = system((shell+command).c_str());
+    i=WEXITSTATUS(ret); // Get return value.
+    return i;
+}
+
 /**
 ## Replace all instances of a string in another string with a third string. Credit to Czarek Tomczak on stack overflow for supplying the code in response to a question asked by NullVoxPopuli.
 */
@@ -71,7 +81,7 @@ void runSimRegex(string regex, string num){
     printing.lock(); // Lock printing to cout without other threads interrupting, then unlock it
     cout << regex << endl;
     printing.unlock();
-    system((regex).c_str()); // Run simulations
+    bash(regex.c_str()); // Run simulations in bash
 }
 
 /**
@@ -86,7 +96,7 @@ Also note that this assumes that all output files end in `.root`, and no other f
 */
 bool clean(bool autoClean, string cleanCMD="rm -f *.root;"){
     if(autoClean){
-        system(cleanCMD.c_str()); // Clean directory
+        bash(cleanCMD.c_str()); // Clean directory
         return 1;
     }
     int i, ret = system(("echo \"There may be conflicting files in your current directory. If there are none, then press s then enter to skip cleaning and continue execution. If you wish to exit the program, press enter to exit. Otherwise, press c then enter to clean up.\" \n read cleanup \n if [ \"$cleanup\" == \"c\" ]; then \n "+cleanCMD+" && exit 1 \n fi \n if [ \"$cleanup\" == \"s\" ]; then \n exit 1 \n fi \nexit 0 \n").c_str()); // Ask user if they want to run the clean command, then run it if necessary
@@ -127,11 +137,11 @@ bool directoryCheck(){
 
 * `--regex` - Runs the simulation from the string provided once all instances of "%n" are replaced by the thread number. It allows for more flexibility in command execution as the singlethreaded command for any simulation (that has the two modifications described below) can easily be multithreaded. Make sure to redirect stdout and stderr to a file or /dev/null to prevent simultaneous writing to the console. Note that the string should be surrounded in quotes as to not specify additional arguments.
 
-* `--output` - Final combined output .root filename. Defaults to `g4out.root`.\
+* `--output` - Final combined output .root filename. Defaults to `g4out.root`.
 
 ## Notes:
 
-The program also wans you if you are running it from a directory not inside of /home/data because of my specific use case.
+* The program also wans you if you are running it from a directory not inside of /home/data because of my specific use case.
 
 Changes needed in simulation for runSim to work:
 1. Simulation seed must pull from /dev/random
