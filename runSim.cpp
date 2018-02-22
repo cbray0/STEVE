@@ -16,7 +16,15 @@ using namespace std;
 /// To prevent multiple threads from using stdout at the same time, lock this mutex, then print, then unlock it to let another thread use it.
 mutex printing;
 
-int bash(std::string command,int nice=0){
+/**
+ ## Call the given command in bash
+
+ ### Arguments
+ * `std::string command` - Command to run. Note that non-interpreters wrappers like nice may not work with aliased commands.
+
+  ### Returns the return value of the given function
+*/
+int bash(std::string command){
     string shell = "\
     #!/bin/bash \n\
     source ~/.bashrc\n\
