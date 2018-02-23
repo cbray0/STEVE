@@ -11,6 +11,7 @@
 #include <ctime>
 #include <limits.h>
 #include <unistd.h>
+#include <cstring>
 
 using namespace std;
 /// To prevent multiple threads from using stdout at the same time, lock this mutex, then print, then unlock it to let another thread use it.
@@ -115,17 +116,20 @@ bool clean(bool autoClean, string cleanCMD="rm -f *.root;"){
 }
 
 /**
-##Check that the current directory is in /home/data
+ ## Check current directory contains the string provided/
 
-### Notes:
-If it is, it returns zero, otherwise it prompts the user if they want to procede anyway or not. Returns 0 if they want to procede and 1 otherwise.
+ ### Arguments:
+ * `string dir` - Directory to check if contained
+
+ ### Notes:
+ If it is, it returns zero, otherwise it prompts the user if they want to procede anyway or not. Returns 0 if they want to procede and 1 otherwise.
 */
-bool directoryCheck(){
-    char result[ PATH_MAX ]; // Warn user if run from a directory that does not begin with /home/data/
-    ssize_t count = readlink( "/proc/self/exe", result, PATH_MAX );
-    string st = std::string( result, (count > 0) ? count : 0 ) ;
-    if(st.find("/home/data")==string::npos){
-        cout << "Warning, not running in /home/data, which may cause out of storage issues. Please consider running from /home/data. Press enter to quit or c then enter to continue." << endl;
+bool directoryContains(string dir){
+    char run_path[256];
+    getcwd(run_path, 255);
+    string path = run_path;
+    if(path.find(dir)==string::npos){
+        cout << "Warning, not running in "+dir+", which may cause out of storage issues. Please consider running from "+dir+". Press enter to quit or c then enter to continue." << endl;
         char input[2];
         cin.getline(input,2);
         if(input[0]!='c'&&input[0]!='C') return 1;
@@ -223,7 +227,7 @@ int main(int argc,char** argv){
         if(string(argv[i])=="-y") autoClean = 1;
         if(string(argv[i])=="--remove") afterClean = 1;
     }
-    if(!autoClean&&directoryCheck()) return 1; // Check if directory is in /home/data or for user override.
+    if(!autoClean&&directoryContains("/home/data")) return 1; // Check if directory is in /home/data or for user override.
     if(!clean(autoClean,cleanCMD)) return 2; // Cleans the directory of g4out*.root files
     regexReplace(output); // Format the output filename
     vector<thread> threadpool;
