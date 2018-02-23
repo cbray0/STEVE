@@ -116,6 +116,7 @@ $(document).ready(function(){initNavTree('runSim_8cpp.html','');});
 <code>#include &lt;ctime&gt;</code><br/>
 <code>#include &lt;limits.h&gt;</code><br/>
 <code>#include &lt;unistd.h&gt;</code><br/>
+<code>#include &lt;cstring&gt;</code><br/>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -129,8 +130,8 @@ Functions</h2></td></tr>
 <tr class="separator:a55ec0c0df95b1118b42d75ecc3709e81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0bf308cdf10032bb5c275aa72cabaf6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8cpp.html#af0bf308cdf10032bb5c275aa72cabaf6">clean</a> (bool autoClean, string cleanCMD=&quot;rm -f *.root;&quot;)</td></tr>
 <tr class="separator:af0bf308cdf10032bb5c275aa72cabaf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc20092961d2d6b739be4b1fdbc74f18"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8cpp.html#acc20092961d2d6b739be4b1fdbc74f18">directoryCheck</a> ()</td></tr>
-<tr class="separator:acc20092961d2d6b739be4b1fdbc74f18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27437496827a50782b3aab97750f7e3c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8cpp.html#a27437496827a50782b3aab97750f7e3c">directoryContains</a> (string dir)</td></tr>
+<tr class="separator:a27437496827a50782b3aab97750f7e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
 <tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -206,19 +207,22 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="acc20092961d2d6b739be4b1fdbc74f18"></a>
+<a class="anchor" id="a27437496827a50782b3aab97750f7e3c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool directoryCheck </td>
+          <td class="memname">bool directoryContains </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>dir</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2>Check that the current directory is in /home/data</h2>
+<h2>Check current directory contains the string provided/</h2>
+<h3>Arguments:</h3>
+<p><code>string dir</code> - Directory to check if contained</p>
 <h3>Notes:</h3>
 <p>If it is, it returns zero, otherwise it prompts the user if they want to procede anyway or not. Returns 0 if they want to procede and 1 otherwise. </p>
 
