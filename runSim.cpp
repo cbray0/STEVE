@@ -22,7 +22,7 @@ mutex printing;
 
  ### Arguments
  * `std::string command` - Command to run. Note that non-interpreters wrappers like nice may not work with aliased commands.
- 
+
  * `int nice` - nice value to run command at (added to avoid issues with nice not working with aliases). Defualts to zero.
 
   ### Returns the return value of the given function
@@ -39,7 +39,14 @@ int bash(std::string command,int nice=0){
 }
 
 /**
-## Replace all instances of a string in another string with a third string. Credit to Czarek Tomczak on stack overflow for supplying the code in response to a question asked by NullVoxPopuli.
+ ## Replace all instances of a string in another string with a third string. Credit to Czarek Tomczak on stack overflow for supplying the code in response to a question asked by NullVoxPopuli.
+
+ ### Arguments:
+ * `std::string subject` - String to do replacements in.
+
+ * `const std::string& search` - Substring to replace with the `replace` string.
+
+ * `const std::string& replace` - Substring to replace the `search` string with.
 */
 std::string ReplaceString(std::string subject, const std::string& search, const std::string& replace) {
     size_t pos = 0;
