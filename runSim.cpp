@@ -31,8 +31,9 @@ int bash(std::string command,int nice=0){
     source ~/.bashrc\n\
     renice -n "+to_string(nice)+" -p $$\n\
     ";
-    system((shell+command).c_str());
-    return 0;
+    int i,ret = system((shell+command).c_str());
+    i=WEXITSTATUS(ret); // Get return value.
+    return i;
 }
 
 /**
