@@ -22,6 +22,7 @@ mutex printing;
 
  ### Arguments
  * `std::string command` - Command to run. Note that non-interpreters wrappers like nice may not work with aliased commands.
+ 
  * `int nice` - nice value to run command at (added to avoid issues with nice not working with aliases). Defualts to zero.
 
   ### Returns the return value of the given function
