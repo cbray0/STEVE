@@ -21,17 +21,18 @@ mutex printing;
 
  ### Arguments
  * `std::string command` - Command to run. Note that non-interpreters wrappers like nice may not work with aliased commands.
+ * `int nice` - nice value to run command at (added to avoid issues with nice not working with aliases). Defualts to zero.
 
   ### Returns the return value of the given function
 */
-int bash(std::string command){
+int bash(std::string command,int nice=0){
     string shell = "\
     #!/bin/bash \n\
     source ~/.bashrc\n\
+    renice -n "+to_string(nice)+" -p $$\n\
     ";
-    int i, ret = system((shell+command).c_str());
-    i=WEXITSTATUS(ret); // Get return value.
-    return i;
+    system((shell+command).c_str());
+    return 0;
 }
 
 /**
@@ -89,7 +90,7 @@ void runSimRegex(string regex, string num){
     printing.lock(); // Lock printing to cout without other threads interrupting, then unlock it
     cout << regex << endl;
     printing.unlock();
-    bash(regex.c_str()); // Run simulations in bash
+    bash(regex.c_str(),11); // Run simulations in bash
 }
 
 /**
