@@ -256,5 +256,9 @@ int main(int argc,char** argv){
         if(string(argv[i])=="-y") autoClean = 1;
         if(string(argv[i])=="--remove") afterClean = 1;
     }
+    if(regex=="") {
+        cout << "Simulation command required. Exiting." << endl;
+        return 0;
+    }
     return runSim(regex,numSims,output,cleanCMD,autoClean,afterClean);
 }
