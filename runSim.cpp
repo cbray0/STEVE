@@ -118,7 +118,7 @@ bool clean(bool autoClean, string cleanCMD="rm -f *.root;"){
         bash(cleanCMD.c_str()); // Clean directory
         return 1;
     }
-    int i, ret = system(("echo \"There may be conflicting files in your current directory. If there are none, then press s then enter to skip cleaning and continue execution. If you wish to exit the program, press enter to exit. Otherwise, press c then enter to clean up.\" \n read cleanup \n if [ \"$cleanup\" == \"c\" ]; then \n "+cleanCMD+" && exit 1 \n fi \n if [ \"$cleanup\" == \"s\" ]; then \n exit 1 \n fi \nexit 0 \n").c_str()); // Ask user if they want to run the clean command, then run it if necessary
+    int i, ret = bash("echo \"There may be conflicting files in your current directory. If there are none, then press s then enter to skip cleaning and continue execution. If you wish to exit the program, press enter to exit. Otherwise, press c then enter to clean up.\" \n read cleanup \n if [ \"$cleanup\" == \"c\" ]; then \n "+cleanCMD+" && exit 1 \n fi \n if [ \"$cleanup\" == \"s\" ]; then \n exit 1 \n fi \nexit 0 \n"); // Ask user if they want to run the clean command, then run it if necessary
     i=WEXITSTATUS(ret); // Get return value: 1 if clean, 0 if not
     return i;
 }
@@ -142,6 +142,36 @@ bool directoryContains(string dir){
         cin.getline(input,2);
         if(input[0]!='c'&&input[0]!='C') return 1;
     }
+    return 0;
+}
+
+/**
+ ## Runs the multithreading workaround. Exists so that it can be easily called from another program.
+
+ ### Arguments:
+ * `string regex` - Runs the simulation from the string provided once all instances of "%n" are replaced by the thread number. It allows for more flexibility in command execution as the singlethreaded command for any simulation (that has the two modifications described below) can easily be multithreaded. Make sure to redirect stdout and stderr to a file or /dev/null to prevent simultaneous writing to the console. Note that the string should be surrounded in quotes as to not specify additional arguments.
+
+ * `int numSims` - Number of threads to run. Defaults to 48.
+
+ * `string output` - Final combined output .root filename. Defaults to `g4out.root`.
+
+ * `string cleanCMD` - Supply your own clean command. If not included, default clean command is `rm -f *.root`. This can reference a file if the command executes a file.
+
+ * `bool autoClean` - Automatically cleans directory and skips directory check without user input.
+
+ * `bool afterclean` - Cleans directory after simulation completion by adding .keep to the end of the output file, then running the clean function, which is by defailt `rm -f *.root`, then moving the output back to the original filename.
+
+*/
+int runSim(string regex, int numSims = 48, string output  = "g4out.root", string cleanCMD = "rm -f *.root", bool autoClean = 0, bool afterClean = 0){
+    if(!autoClean&&directoryContains("/home/data")) return 1; // Check if directory is in /home/data or for user override.
+    if(!clean(autoClean,cleanCMD)) return 2; // Cleans the directory of g4out*.root files
+    regexReplace(output); // Format the output filename
+    vector<thread> threadpool;
+    for(int i=0;i<stoi(numSims);i++) threadpool.push_back(thread(runSimRegex, regex, to_string(i))); // Start each numbered simulation in a thread
+    for(int i=0;i<stoi(numSims);i++) threadpool[i].join(); // Wait for all simulations to finish
+    cout << output << endl; // TODO
+    system(("hadd "+output+" *.root").c_str()); // Merge all histograms
+    if(afterClean) bash("mv "+output+" "+output+".keep;"+cleanCMD+";mv "+output+".keep "+output);
     return 0;
 }
 
@@ -221,7 +251,6 @@ int main(int argc,char** argv){
     string numSims = "48"; // Default values for all arguments
     bool autoClean = 0;
     bool afterClean = 0;
-    string test = "";
     string regex = "";
     string output = "g4out.root";
     string cleanCMD="rm -f *.root";
@@ -235,14 +264,5 @@ int main(int argc,char** argv){
         if(string(argv[i])=="-y") autoClean = 1;
         if(string(argv[i])=="--remove") afterClean = 1;
     }
-    if(!autoClean&&directoryContains("/home/data")) return 1; // Check if directory is in /home/data or for user override.
-    if(!clean(autoClean,cleanCMD)) return 2; // Cleans the directory of g4out*.root files
-    regexReplace(output); // Format the output filename
-    vector<thread> threadpool;
-    for(int i=0;i<stoi(numSims);i++) threadpool.push_back(thread(runSimRegex, regex, to_string(i))); // Start each numbered simulation in a thread
-    for(int i=0;i<stoi(numSims);i++) threadpool[i].join(); // Wait for all simulations to finish
-    cout << output << endl; // TODO
-    system(("hadd "+output+" *.root").c_str()); // Merge all histograms
-    if(afterClean)system(("mv "+output+" "+output+".keep;"+cleanCMD+";mv "+output+".keep "+output).c_str());
-    return 0;
+    return runSim(regex,numSims,output,cleanCMD,autoClean,afterClean);
 }
