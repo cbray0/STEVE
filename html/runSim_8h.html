@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>STEVE (Simultaneous Thread EValuation of gEant4): runSim.cpp File Reference</title>
+<title>STEVE (Simultaneous Thread EValuation of gEant4): runSim.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,7 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('runSim_8cpp.html','');});
+$(document).ready(function(){initNavTree('runSim_8h.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -102,41 +102,42 @@ $(document).ready(function(){initNavTree('runSim_8cpp.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">runSim.cpp File Reference</div>  </div>
+<div class="title">runSim.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="runSim_8h_source.html">runSim.h</a>&quot;</code><br/>
-</div><table class="memberdecls">
+<div class="textblock"><code>#include &lt;string&gt;</code><br/>
+<code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;thread&gt;</code><br/>
+<code>#include &lt;vector&gt;</code><br/>
+<code>#include &lt;mutex&gt;</code><br/>
+<code>#include &lt;ctime&gt;</code><br/>
+<code>#include &lt;limits.h&gt;</code><br/>
+<code>#include &lt;unistd.h&gt;</code><br/>
+<code>#include &lt;cstring&gt;</code><br/>
+</div>
+<p><a href="runSim_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a086056b68efd94bcb1ebf2c1811f73fd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8cpp.html#a086056b68efd94bcb1ebf2c1811f73fd">bash</a> (std::string command, int nice=0)</td></tr>
-<tr class="separator:a086056b68efd94bcb1ebf2c1811f73fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77f79fe88017c77fe691dca577d3fe49"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8cpp.html#a77f79fe88017c77fe691dca577d3fe49">ReplaceString</a> (std::string subject, const std::string &amp;search, const std::string &amp;replace)</td></tr>
+<tr class="memitem:a725c28a31a136377b71c6e5c19dcf5cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8h.html#a725c28a31a136377b71c6e5c19dcf5cc">bash</a> (std::string command, int nice)</td></tr>
+<tr class="separator:a725c28a31a136377b71c6e5c19dcf5cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77f79fe88017c77fe691dca577d3fe49"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8h.html#a77f79fe88017c77fe691dca577d3fe49">ReplaceString</a> (std::string subject, const std::string &amp;search, const std::string &amp;replace)</td></tr>
 <tr class="separator:a77f79fe88017c77fe691dca577d3fe49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a852ffc8e202d83924bcf66a38a5cac22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8cpp.html#a852ffc8e202d83924bcf66a38a5cac22">regexReplace</a> (string &amp;input, const string threadnumber=&quot;&quot;)</td></tr>
-<tr class="separator:a852ffc8e202d83924bcf66a38a5cac22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55ec0c0df95b1118b42d75ecc3709e81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8cpp.html#a55ec0c0df95b1118b42d75ecc3709e81">runSimRegex</a> (string regex, string num)</td></tr>
+<tr class="memitem:a06518186b71ee251267b4ff65a19a8d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8h.html#a06518186b71ee251267b4ff65a19a8d1">regexReplace</a> (string &amp;input, const string threadnumber)</td></tr>
+<tr class="separator:a06518186b71ee251267b4ff65a19a8d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55ec0c0df95b1118b42d75ecc3709e81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8h.html#a55ec0c0df95b1118b42d75ecc3709e81">runSimRegex</a> (string regex, string num)</td></tr>
 <tr class="separator:a55ec0c0df95b1118b42d75ecc3709e81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0bf308cdf10032bb5c275aa72cabaf6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8cpp.html#af0bf308cdf10032bb5c275aa72cabaf6">clean</a> (bool autoClean, string cleanCMD=&quot;rm -f *.root;&quot;)</td></tr>
-<tr class="separator:af0bf308cdf10032bb5c275aa72cabaf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27437496827a50782b3aab97750f7e3c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8cpp.html#a27437496827a50782b3aab97750f7e3c">directoryContains</a> (string dir)</td></tr>
+<tr class="memitem:aa7a2bab796ef54fdf5d67d6545d366ab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8h.html#aa7a2bab796ef54fdf5d67d6545d366ab">clean</a> (bool autoClean, string cleanCMD)</td></tr>
+<tr class="separator:aa7a2bab796ef54fdf5d67d6545d366ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27437496827a50782b3aab97750f7e3c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8h.html#a27437496827a50782b3aab97750f7e3c">directoryContains</a> (string dir)</td></tr>
 <tr class="separator:a27437496827a50782b3aab97750f7e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1297ff10386e22378df992829ae1159f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8cpp.html#a1297ff10386e22378df992829ae1159f">runSim</a> (string regex, string numSims=&quot;48&quot;, string output=&quot;g4out.root&quot;, string cleanCMD=&quot;rm -f *.root&quot;, bool autoClean=0, bool afterClean=0)</td></tr>
-<tr class="separator:a1297ff10386e22378df992829ae1159f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
-<tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:af02de9b1df13f8af2bb6abe194f5c69c"><td class="memItemLeft" align="right" valign="top">mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8cpp.html#af02de9b1df13f8af2bb6abe194f5c69c">printing</a></td></tr>
-<tr class="memdesc:af02de9b1df13f8af2bb6abe194f5c69c"><td class="mdescLeft">&#160;</td><td class="mdescRight">To prevent multiple threads from using stdout at the same time, lock this mutex, then print, then unlock it to let another thread use it.  <a href="#af02de9b1df13f8af2bb6abe194f5c69c">More...</a><br/></td></tr>
-<tr class="separator:af02de9b1df13f8af2bb6abe194f5c69c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35abd590b8d2010d6beb9e0c6b103eba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8h.html#a35abd590b8d2010d6beb9e0c6b103eba">runSim</a> (string regex, string numSims, string output, string cleanCMD, bool autoClean, bool afterClean)</td></tr>
+<tr class="separator:a35abd590b8d2010d6beb9e0c6b103eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a086056b68efd94bcb1ebf2c1811f73fd"></a>
+<a class="anchor" id="a725c28a31a136377b71c6e5c19dcf5cc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -169,7 +170,7 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af0bf308cdf10032bb5c275aa72cabaf6"></a>
+<a class="anchor" id="aa7a2bab796ef54fdf5d67d6545d366ab"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -225,81 +226,7 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int main </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>argc</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>argv</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<h2>Multithreading workaround</h2>
-<h3>Arguments:</h3>
-<p><code>-t threads</code> - Number of threads to run</p>
-<p><code>-y</code> - Automatically cleans directory and skips directory check without user input.</p>
-<p><code>--clean</code> - Supply your own clean command. If not included, default clean command is <code>rm -f *.root</code>. This can reference a file if the command executes a file.</p>
-<p><code>--remove</code> - Cleans directory after simulation completion by adding .keep to the end of the output file, then running the clean function, which is by defailt <code>rm -f *.root</code>, then moving the output back to the original filename.</p>
-<p><code>--regex</code> - Runs the simulation from the string provided once all instances of "%n" are replaced by the thread number. It allows for more flexibility in command execution as the singlethreaded command for any simulation (that has the two modifications described below) can easily be multithreaded. Make sure to redirect stdout and stderr to a file or /dev/null to prevent simultaneous writing to the console. Note that the string should be surrounded in quotes as to not specify additional arguments.</p>
-<p><code>--output</code> - Final combined output .root filename. Defaults to <code>g4out.root</code>.</p>
-<h2>Notes:</h2>
-<p>The program also wans you if you are running it from a directory not inside of /home/data because of my specific use case.</p>
-<p>Changes needed in simulation for runSim to work:</p>
-<ol type="1">
-<li>Simulation seed must pull from /dev/random Reference implementation:</li>
-</ol>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line">G4int random_seed(){ <span class="comment">// Credit to posop on stackoverflow for code that I adapted. Reading an int from /dev/random is a better random seed than time(NULL) because it is cryptographically secure and protects against multiple instances loading in same second, which was a problem before.</span></div>
-<div class="line">    G4int seed;</div>
-<div class="line">    std::ifstream file(<span class="stringliteral">&quot;/dev/random&quot;</span>,std::ios::binary);</div>
-<div class="line">    <span class="keywordflow">if</span>(file.is_open()){</div>
-<div class="line">        <span class="keywordtype">char</span> *memblock;</div>
-<div class="line">        G4int size=<span class="keyword">sizeof</span>(G4int);</div>
-<div class="line">        memblock=<span class="keyword">new</span> <span class="keywordtype">char</span> [size];</div>
-<div class="line">        file.read(memblock,size);</div>
-<div class="line">        file.close();</div>
-<div class="line">        seed=*<span class="keyword">reinterpret_cast&lt;</span>G4int*<span class="keyword">&gt;</span>(memblock);</div>
-<div class="line">        <span class="keyword">delete</span>[] memblock;</div>
-<div class="line">        <span class="keywordflow">return</span> seed;</div>
-<div class="line">    }<span class="keywordflow">else</span>{<span class="keywordflow">return</span> random_seed();} <span class="comment">// Continually retry until /dev/random is free</span></div>
-<div class="line">}</div>
-</div><!-- fragment --><p>Then in int main</p>
-<div class="fragment"><div class="line">G4int seed = random_seed();</div>
-<div class="line">G4Random::setTheSeed( seed );</div>
-</div><!-- fragment --><ol type="1">
-<li>Simulation must take an argument to change output filename by adding characters (eg. adding the supplied string between the <code>g4out</code> and the <code>.root</code>). Note that the resulting files must still end in <code>.root</code>. Reference implmentation:</li>
-</ol>
-<div class="fragment"><div class="line"><span class="comment">// In main executable, eg. Griffinv10.cc</span></div>
-<div class="line"><span class="comment">// In global scope:</span></div>
-<div class="line">G4String file_name=<span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="comment">// In argument parsing:</span></div>
-<div class="line"><span class="keywordflow">if</span>(argc&gt;2) file_name=argv[2];</div>
-<div class="line"><span class="comment">// In Histomanager.cc</span></div>
-<div class="line"><span class="comment">// In HistoManager::HistoManager()</span></div>
-<div class="line"><span class="comment">// Replacing fFileName[0] = &quot;g4out&quot;;</span></div>
-<div class="line"><span class="keyword">extern</span> G4String file_name;</div>
-<div class="line">fFileName[0] = <span class="stringliteral">&quot;g4out&quot;</span>+file_name;</div>
-</div><!-- fragment --><h2>Building</h2>
-<p>To build <a class="el" href="runSim_8cpp.html">runSim.cpp</a>, use </p>
-<div class="fragment"><div class="line">g++ -Wall -std=c++11 -pthread -Ofast -o <a class="code" href="runSim_8cpp.html#a1297ff10386e22378df992829ae1159f">runSim</a>.o <a class="code" href="runSim_8cpp.html#a1297ff10386e22378df992829ae1159f">runSim</a>.cpp</div>
-</div><!-- fragment --> 
-</div>
-</div>
-<a class="anchor" id="a852ffc8e202d83924bcf66a38a5cac22"></a>
+<a class="anchor" id="a06518186b71ee251267b4ff65a19a8d1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -375,7 +302,7 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a1297ff10386e22378df992829ae1159f"></a>
+<a class="anchor" id="a35abd590b8d2010d6beb9e0c6b103eba"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -467,29 +394,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="af02de9b1df13f8af2bb6abe194f5c69c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">mutex printing</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>To prevent multiple threads from using stdout at the same time, lock this mutex, then print, then unlock it to let another thread use it. </p>
-
-<p>Referenced by <a class="el" href="runSim_8h.html#a55ec0c0df95b1118b42d75ecc3709e81">runSimRegex()</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="runSim_8cpp.html">runSim.cpp</a></li>
+    <li class="navelem"><a class="el" href="runSim_8h.html">runSim.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
