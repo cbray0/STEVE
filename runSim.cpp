@@ -3,15 +3,7 @@
 
     @author Connor Bray
 */
-#include <string>
-#include <iostream>
-#include <thread>
-#include <vector>
-#include <mutex>
-#include <ctime>
-#include <limits.h>
-#include <unistd.h>
-#include <cstring>
+#include "runSim.h"
 
 using namespace std;
 /// To prevent multiple threads from using stdout at the same time, lock this mutex, then print, then unlock it to let another thread use it.
