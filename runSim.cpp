@@ -151,7 +151,7 @@ bool directoryContains(string dir){
  ### Arguments:
  * `string regex` - Runs the simulation from the string provided once all instances of "%n" are replaced by the thread number. It allows for more flexibility in command execution as the singlethreaded command for any simulation (that has the two modifications described below) can easily be multithreaded. Make sure to redirect stdout and stderr to a file or /dev/null to prevent simultaneous writing to the console. Note that the string should be surrounded in quotes as to not specify additional arguments.
 
- * `int numSims` - Number of threads to run. Defaults to 48.
+ * `string numSims` - Number of threads to run. Defaults to 48.
 
  * `string output` - Final combined output .root filename. Defaults to `g4out.root`.
 
@@ -162,7 +162,7 @@ bool directoryContains(string dir){
  * `bool afterclean` - Cleans directory after simulation completion by adding .keep to the end of the output file, then running the clean function, which is by defailt `rm -f *.root`, then moving the output back to the original filename.
 
 */
-int runSim(string regex, int numSims = 48, string output  = "g4out.root", string cleanCMD = "rm -f *.root", bool autoClean = 0, bool afterClean = 0){
+int runSim(string regex, string numSims = "48", string output  = "g4out.root", string cleanCMD = "rm -f *.root", bool autoClean = 0, bool afterClean = 0){
     if(!autoClean&&directoryContains("/home/data")) return 1; // Check if directory is in /home/data or for user override.
     if(!clean(autoClean,cleanCMD)) return 2; // Cleans the directory of g4out*.root files
     regexReplace(output); // Format the output filename
