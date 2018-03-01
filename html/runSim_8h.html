@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -91,7 +92,7 @@ $(document).ready(function(){initNavTree('runSim_8h.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -102,6 +103,7 @@ $(document).ready(function(){initNavTree('runSim_8h.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">runSim.h File Reference</div>  </div>
@@ -119,302 +121,35 @@ $(document).ready(function(){initNavTree('runSim_8h.html','');});
 </div>
 <p><a href="runSim_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacesimulation"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesimulation.html">simulation</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a725c28a31a136377b71c6e5c19dcf5cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8h.html#a725c28a31a136377b71c6e5c19dcf5cc">bash</a> (std::string command, int nice)</td></tr>
-<tr class="memdesc:a725c28a31a136377b71c6e5c19dcf5cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call the given command in bash.  <a href="#a725c28a31a136377b71c6e5c19dcf5cc">More...</a><br/></td></tr>
-<tr class="separator:a725c28a31a136377b71c6e5c19dcf5cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77f79fe88017c77fe691dca577d3fe49"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8h.html#a77f79fe88017c77fe691dca577d3fe49">ReplaceString</a> (std::string subject, const std::string &amp;search, const std::string &amp;replace)</td></tr>
-<tr class="memdesc:a77f79fe88017c77fe691dca577d3fe49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace all instances of a string in another string with a third string.  <a href="#a77f79fe88017c77fe691dca577d3fe49">More...</a><br/></td></tr>
-<tr class="separator:a77f79fe88017c77fe691dca577d3fe49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06518186b71ee251267b4ff65a19a8d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8h.html#a06518186b71ee251267b4ff65a19a8d1">regexReplace</a> (string &amp;input, const string threadnumber)</td></tr>
-<tr class="memdesc:a06518186b71ee251267b4ff65a19a8d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply regex transformations to input string.  <a href="#a06518186b71ee251267b4ff65a19a8d1">More...</a><br/></td></tr>
-<tr class="separator:a06518186b71ee251267b4ff65a19a8d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55ec0c0df95b1118b42d75ecc3709e81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8h.html#a55ec0c0df95b1118b42d75ecc3709e81">runSimRegex</a> (string regex, string num)</td></tr>
-<tr class="memdesc:a55ec0c0df95b1118b42d75ecc3709e81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run a thread of the simulation.  <a href="#a55ec0c0df95b1118b42d75ecc3709e81">More...</a><br/></td></tr>
-<tr class="separator:a55ec0c0df95b1118b42d75ecc3709e81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7a2bab796ef54fdf5d67d6545d366ab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8h.html#aa7a2bab796ef54fdf5d67d6545d366ab">clean</a> (bool autoClean, string cleanCMD)</td></tr>
-<tr class="memdesc:aa7a2bab796ef54fdf5d67d6545d366ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean the current directory.  <a href="#aa7a2bab796ef54fdf5d67d6545d366ab">More...</a><br/></td></tr>
-<tr class="separator:aa7a2bab796ef54fdf5d67d6545d366ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27437496827a50782b3aab97750f7e3c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8h.html#a27437496827a50782b3aab97750f7e3c">directoryContains</a> (string dir)</td></tr>
-<tr class="memdesc:a27437496827a50782b3aab97750f7e3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check current directory contains the string provided/.  <a href="#a27437496827a50782b3aab97750f7e3c">More...</a><br/></td></tr>
-<tr class="separator:a27437496827a50782b3aab97750f7e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35abd590b8d2010d6beb9e0c6b103eba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="runSim_8h.html#a35abd590b8d2010d6beb9e0c6b103eba">runSim</a> (string regex, string numSims, string output, string cleanCMD, bool autoClean, bool afterClean)</td></tr>
-<tr class="memdesc:a35abd590b8d2010d6beb9e0c6b103eba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the multithreading workaround. Exists so that it can be easily called from another program.  <a href="#a35abd590b8d2010d6beb9e0c6b103eba">More...</a><br/></td></tr>
-<tr class="separator:a35abd590b8d2010d6beb9e0c6b103eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5be078fdee7b1e0d7ca6e796823fd062"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesimulation.html#a5be078fdee7b1e0d7ca6e796823fd062">simulation::bash</a> (std::string command, int nice=0)</td></tr>
+<tr class="memdesc:a5be078fdee7b1e0d7ca6e796823fd062"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call the given command in bash.  <a href="#a5be078fdee7b1e0d7ca6e796823fd062">More...</a><br/></td></tr>
+<tr class="separator:a5be078fdee7b1e0d7ca6e796823fd062"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7934db74f99c7f97d0203708e49313e7"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesimulation.html#a7934db74f99c7f97d0203708e49313e7">simulation::ReplaceString</a> (std::string subject, const std::string &amp;search, const std::string &amp;replace)</td></tr>
+<tr class="memdesc:a7934db74f99c7f97d0203708e49313e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace all instances of a string in another string with a third string.  <a href="#a7934db74f99c7f97d0203708e49313e7">More...</a><br/></td></tr>
+<tr class="separator:a7934db74f99c7f97d0203708e49313e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04fb47463c19b8ac01256d41fd3fbc0f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesimulation.html#a04fb47463c19b8ac01256d41fd3fbc0f">simulation::directoryContains</a> (string dir)</td></tr>
+<tr class="memdesc:a04fb47463c19b8ac01256d41fd3fbc0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check current directory contains the string provided/.  <a href="#a04fb47463c19b8ac01256d41fd3fbc0f">More...</a><br/></td></tr>
+<tr class="separator:a04fb47463c19b8ac01256d41fd3fbc0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1154df8b516b7e7782424cc067eea05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesimulation.html#aa1154df8b516b7e7782424cc067eea05">simulation::regexReplace</a> (string &amp;input, const string threadnumber=&quot;&quot;)</td></tr>
+<tr class="memdesc:aa1154df8b516b7e7782424cc067eea05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply regex transformations to input string.  <a href="#aa1154df8b516b7e7782424cc067eea05">More...</a><br/></td></tr>
+<tr class="separator:aa1154df8b516b7e7782424cc067eea05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a436c7686914c2f8011d9de0263f5eb22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesimulation.html#a436c7686914c2f8011d9de0263f5eb22">simulation::runSimRegex</a> (string regex, string num)</td></tr>
+<tr class="memdesc:a436c7686914c2f8011d9de0263f5eb22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run a thread of the simulation.  <a href="#a436c7686914c2f8011d9de0263f5eb22">More...</a><br/></td></tr>
+<tr class="separator:a436c7686914c2f8011d9de0263f5eb22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a590b3048aeb5f97532019d939f03689f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesimulation.html#a590b3048aeb5f97532019d939f03689f">simulation::clean</a> (bool autoClean, string cleanCMD=&quot;rm -f *.root;&quot;)</td></tr>
+<tr class="memdesc:a590b3048aeb5f97532019d939f03689f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean the current directory.  <a href="#a590b3048aeb5f97532019d939f03689f">More...</a><br/></td></tr>
+<tr class="separator:a590b3048aeb5f97532019d939f03689f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e74f232951e017de356f58e9e977161"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesimulation.html#a4e74f232951e017de356f58e9e977161">simulation::runSim</a> (string regex, string numSims=&quot;48&quot;, string output=&quot;g4out.root&quot;, string cleanCMD=&quot;rm -f *.root&quot;, bool autoClean=0, bool afterClean=0)</td></tr>
+<tr class="memdesc:a4e74f232951e017de356f58e9e977161"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the multithreading workaround. Exists so that it can be easily called from another program.  <a href="#a4e74f232951e017de356f58e9e977161">More...</a><br/></td></tr>
+<tr class="separator:a4e74f232951e017de356f58e9e977161"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a725c28a31a136377b71c6e5c19dcf5cc"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int bash </td>
-          <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>command</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>nice</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Call the given command in bash. </p>
-<h2>Call the given command in bash</h2>
-<h3>Arguments</h3>
-<p><code>std::string command</code> - Command to run. Note that non-interpreters wrappers like nice may not work with aliased commands.</p>
-<p><code>int nice</code> - nice value to run command at (added to avoid issues with nice not working with aliases). Defualts to zero.</p>
-<h3>Returns the return value of the given function</h3>
-
-<p>Referenced by <a class="el" href="runSim_8h.html#aa7a2bab796ef54fdf5d67d6545d366ab">clean()</a>, <a class="el" href="runSim_8h.html#a35abd590b8d2010d6beb9e0c6b103eba">runSim()</a>, and <a class="el" href="runSim_8h.html#a55ec0c0df95b1118b42d75ecc3709e81">runSimRegex()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aa7a2bab796ef54fdf5d67d6545d366ab"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool clean </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>autoClean</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>cleanCMD</em> = <code>&quot;rm&#160;-f&#160;*.root;&quot;</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Clean the current directory. </p>
-<h2>Clean the current directory</h2>
-<h3>Arguments:</h3>
-<p><code>bool autoClean</code> - Bool of whether or not to automatically clean the directory. It defualts to zero, which will prompt the user first, but if set to one the program cleans the directory without outside input.</p>
-<h3>Notes:</h3>
-<p>Ensures there are no files matching g4out*.root in the current directory. If there are, it offers to automatically remove them, or to exit the program to allow the user to save and remove them manually. Also note that this assumes that all output files end in <code>.root</code>, and no other files end in <code>.root</code>. If you want to preserve these files, you should move them to a differnt directory or change their filename (as an example, <code>g4out.root</code>-&gt;<code>g4out.root.keep</code>). </p>
-
-<p>Referenced by <a class="el" href="runSim_8h.html#a35abd590b8d2010d6beb9e0c6b103eba">runSim()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a27437496827a50782b3aab97750f7e3c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool directoryContains </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>dir</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check current directory contains the string provided/. </p>
-<h2>Check current directory contains the string provided/</h2>
-<h3>Arguments:</h3>
-<p><code>string dir</code> - Directory to check if contained</p>
-<h3>Notes:</h3>
-<p>If it is, it returns zero, otherwise it prompts the user if they want to procede anyway or not. Returns 0 if they want to procede and 1 otherwise. </p>
-
-<p>Referenced by <a class="el" href="runSim_8h.html#a35abd590b8d2010d6beb9e0c6b103eba">runSim()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a06518186b71ee251267b4ff65a19a8d1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void regexReplace </td>
-          <td>(</td>
-          <td class="paramtype">string &amp;&#160;</td>
-          <td class="paramname"><em>input</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const string&#160;</td>
-          <td class="paramname"><em>threadnumber</em> = <code>&quot;&quot;</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Apply regex transformations to input string. </p>
-<h2>Apply regex transformations to input string.</h2>
-<h3>Arguments:</h3>
-<p><code>string&amp; input</code> - Input string reference to modify in place.</p>
-<p><code>const string threadnumber</code> - Threadnumber string to replace n with. Only valid for threads, so it defaults to "".</p>
-<h3>Transformations:</h3>
-<p>"%d" -&gt; date</p>
-<p>"%t" -&gt; time</p>
-<p>"%u" -&gt; unix time</p>
-<p>"%n" -&gt; thread number </p>
-
-<p>Referenced by <a class="el" href="runSim_8h.html#a35abd590b8d2010d6beb9e0c6b103eba">runSim()</a>, and <a class="el" href="runSim_8h.html#a55ec0c0df95b1118b42d75ecc3709e81">runSimRegex()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a77f79fe88017c77fe691dca577d3fe49"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string ReplaceString </td>
-          <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>subject</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>search</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>replace</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Replace all instances of a string in another string with a third string. </p>
-<h2>Replace all instances of a string in another string with a third string. Credit to Czarek Tomczak on stack overflow for supplying the code in response to a question asked by NullVoxPopuli.</h2>
-<h3>Arguments:</h3>
-<p><code>std::string subject</code> - String to do replacements in.</p>
-<p><code>const std::string&amp; search</code> - Substring to replace with the <code>replace</code> string.</p>
-<p><code>const std::string&amp; replace</code> - Substring to replace the <code>search</code> string with. </p>
-
-<p>Referenced by <a class="el" href="runSim_8h.html#a06518186b71ee251267b4ff65a19a8d1">regexReplace()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a35abd590b8d2010d6beb9e0c6b103eba"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int runSim </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>regex</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>numSims</em> = <code>&quot;48&quot;</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>output</em> = <code>&quot;g4out.root&quot;</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>cleanCMD</em> = <code>&quot;rm&#160;-f&#160;*.root&quot;</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>autoClean</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>afterClean</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Runs the multithreading workaround. Exists so that it can be easily called from another program. </p>
-<h2>Runs the multithreading workaround. Exists so that it can be easily called from another program.</h2>
-<h3>Arguments:</h3>
-<p><code>string regex</code> - Runs the simulation from the string provided once all instances of "%n" are replaced by the thread number. It allows for more flexibility in command execution as the singlethreaded command for any simulation (that has the two modifications described below) can easily be multithreaded. Make sure to redirect stdout and stderr to a file or /dev/null to prevent simultaneous writing to the console. Note that the string should be surrounded in quotes as to not specify additional arguments.</p>
-<p><code>string numSims</code> - Number of threads to run. Defaults to 48.</p>
-<p><code>string output</code> - Final combined output .root filename. Defaults to <code>g4out.root</code>.</p>
-<p><code>string cleanCMD</code> - Supply your own clean command. If not included, default clean command is <code>rm -f *.root</code>. This can reference a file if the command executes a file.</p>
-<p><code>bool autoClean</code> - Automatically cleans directory and skips directory check without user input.</p>
-<p><code>bool afterclean</code> - Cleans directory after simulation completion by adding .keep to the end of the output file, then running the clean function, which is by defailt <code>rm -f *.root</code>, then moving the output back to the original filename. </p>
-
-<p>Referenced by <a class="el" href="runSim_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a55ec0c0df95b1118b42d75ecc3709e81"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void runSimRegex </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>regex</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>num</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Run a thread of the simulation. </p>
-<h2>Run a thread of the simulation</h2>
-<h3>Arguments:</h3>
-<p><code>string regex</code> - Command to run for each string, where every instance of "%n" will be replaced with the thread number.</p>
-<p><code>string num</code> - Thread number </p>
-
-<p>Referenced by <a class="el" href="runSim_8h.html#a35abd590b8d2010d6beb9e0c6b103eba">runSim()</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

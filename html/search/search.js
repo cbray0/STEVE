@@ -7,19 +7,19 @@
 
 var indexSectionsWithContent =
 {
-  0: "bcdmprs",
-  1: "r",
-  2: "bcdmr",
-  3: "p",
+  0: "bcdmrs",
+  1: "s",
+  2: "r",
+  3: "bcdmr",
   4: "s"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "files",
-  2: "functions",
-  3: "variables",
+  1: "namespaces",
+  2: "files",
+  3: "functions",
   4: "pages"
 };
 
