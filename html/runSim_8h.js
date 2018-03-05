@@ -5,6 +5,7 @@ var runSim_8h =
     [ "directoryContains", "runSim_8h.html#a04fb47463c19b8ac01256d41fd3fbc0f", null ],
     [ "regexReplace", "runSim_8h.html#aa1154df8b516b7e7782424cc067eea05", null ],
     [ "ReplaceString", "runSim_8h.html#a7934db74f99c7f97d0203708e49313e7", null ],
+    [ "returnVal", "runSim_8h.html#a6f2692fb5a9573c3bf69660444302afa", null ],
     [ "runSim", "runSim_8h.html#a4e74f232951e017de356f58e9e977161", null ],
     [ "runSimRegex", "runSim_8h.html#a436c7686914c2f8011d9de0263f5eb22", null ]
 ];
