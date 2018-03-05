@@ -7,10 +7,12 @@
 #include <limits.h>
 #include <unistd.h>
 #include <cstring>
+#include <atomic>
 
 using namespace std;
 
 namespace simulation{
+std::atomic<int> returnVal(0);
 /**
  @brief Call the given command in bash
 
@@ -124,7 +126,8 @@ void regexReplace(string& input,const string threadnumber=""){
 void runSimRegex(string regex, string num){
     regexReplace(regex,num);
     cout << regex+"\n";
-    bash(regex,11); // Run simulations in bash
+    int status = bash(regex,11); // Run simulations in bash
+    if(status) returnVal = status;
 }
 
 /**
@@ -176,8 +179,10 @@ int runSim(string regex, string numSims = "48", string output = "g4out.root", st
     vector<thread> threadpool;
     for(int i=0;i<stoi(numSims);i++) threadpool.push_back(thread(runSimRegex, regex, to_string(i))); // Start each numbered simulation in a thread
     for(int i=0;i<stoi(numSims);i++) threadpool[i].join(); // Wait for all simulations to finish
-    cout << output << endl; // TODO
-    system(("hadd "+output+" *.root").c_str()); // Merge all histograms
+    if(returnVal!=0) return returnVal; // Exit if there are problems
+    int i,ret = system(("hadd "+output+" *.root").c_str()); // Merge all histograms
+    i=WEXITSTATUS(ret);
+    if(i) return i;
     if(afterClean) bash("mv "+output+" "+output+".keep;"+cleanCMD+";mv "+output+".keep "+output);
     return 0;
 }
